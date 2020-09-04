@@ -15,7 +15,6 @@ import {
 import { ChartPanelData } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppService } from '../app-service';
-import { cloneDeep } from 'lodash-es';
 import * as gridsterOptions from '../gridster-options';
 
 @Component({
