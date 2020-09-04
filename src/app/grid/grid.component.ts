@@ -15,11 +15,15 @@ export class GridComponent {
   private readonly widgetSizeChange = new BehaviorSubject<any>({ id: -1 });
   public readonly widgetSizeChange$ = this.widgetSizeChange.asObservable();
   public gridsterOptions = gridsterOptions;
+  private _charts: ChartPanelData[];
 
   @Input() set charts(value: ChartPanelData[]) {
-    if (value) {
-      this.charts = value;
-    }
+    console.log(value);
+    this._charts = value;
+  }
+
+  get charts(): ChartPanelData[] {
+    return this._charts;
   }
 
   constructor(private appService: AppService) {
