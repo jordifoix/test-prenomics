@@ -31,9 +31,14 @@ export class GridComponent {
   }
 
   public deleteChart(chartId: number): void {
-    this.appService.updateCharts(
-      this.charts.filter((chart) => chart.id === chartId)
-    );
+    let newCharts = [];
+    if (this.charts.length > 1) {
+      newCharts = this.charts.filter((chart) => chart.id === chartId);
+    }
+    console.log('id del element: ' + chartId);
+    console.log('array sense element:');
+    console.log(newCharts);
+    this.appService.updateCharts(newCharts);
   }
 
   public widgetChange(event, chart: ChartPanelData): void {

@@ -9,30 +9,22 @@ import { Injectable } from '@angular/core';
 })
 export class AppService {
   private state: ChartPanelData[] = null;
-  public readonly data$: Observable<ChartPanelData[]>;
-  // public readonly lastSavedState$: Observable<ChartPanelData[]>;
   private lastSavedState = null;
 
   private lastId = 0;
 
-  constructor() {
-    // this.data$ = appStore.select('chartPanels');
-  }
+  constructor() {}
 
   public getCurrentValue(name): ChartPanelData[] {
     return appStore.getValue(name);
   }
 
   public saveCurrentState(): void {
-    // const currState = appStore.getValue('chartPanels');
-    // console.log(currState);
-    // appStore.set('lastSavedState', currState);
     this.lastSavedState = appStore.getValue('chartPanels');
     appStore.set('chartsChanged', false);
   }
 
   public restoreLastSavedState(): void {
-    // const lastSave = appStore.getValue('lastSavedState');
     appStore.set('chartPanels', this.lastSavedState);
     appStore.set('chartsChanged', false);
   }
@@ -47,13 +39,6 @@ export class AppService {
     appStore.set('chartsChanged', true);
   }
 
-  // public changeChart(newData: ChartPanelData): void {
-  //   const charts = appStore.getValue('chartPanels');
-  //   let oldData = charts.find((chart) => chart.id === newData.id);
-  //   oldData = newData;
-  //   appStore.set('chartPanels', charts);
-  // }
-
   public updateCharts(charts: ChartPanelData[]): void {
     appStore.set('chartPanels', charts);
     if (this.lastSavedState === charts) {
@@ -62,13 +47,6 @@ export class AppService {
       appStore.set('chartsChanged', true);
     }
   }
-
-  // public deleteChart(chartId: number): void {
-  //   const newCharts = appStore
-  //     .getValue('chartPanels')
-  //     .filter((chart) => chart.id !== chartId);
-  //   appStore.set('chartPanels', newCharts);
-  // }
 
   public destroy(): void {
     appStore.destroy();
