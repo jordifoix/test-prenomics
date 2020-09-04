@@ -25,8 +25,6 @@ import * as gridsterOptions from '../gridster-options';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent {
-  // public readonly charts: Observable<ChartPanelData[]>;
-
   private readonly widgetSizeChange = new BehaviorSubject<any>({ id: -1 });
   public readonly widgetSizeChange$ = this.widgetSizeChange.asObservable();
   public gridsterOptions = gridsterOptions;
