@@ -27,7 +27,7 @@ export const gridsterOptions: IGridsterOptions = {
   useCSSTransforms: true,
   responsiveView: true, // turn on adopting items sizes on window resize and enable responsiveOptions
   responsiveDebounce: 500, // window resize debounce time
-  responsiveSizes: true,
+  responsiveSizes: false,
   // List of different gridster configurations for different breakpoints.
   // Each breakpoint is defined by name stored in "breakpoint" property. There is fixed set of breakpoints
   // available to use with default minWidth assign to each.

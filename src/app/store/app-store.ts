@@ -3,7 +3,7 @@ import { AppState } from '../interfaces';
 
 export class AppStore extends Store<AppState> {
   constructor() {
-    super({ chartPanels: null, lastSavedState: null, chartsChanged: false });
+    super({ chartPanels: null, chartsChanged: false });
   }
 }
 

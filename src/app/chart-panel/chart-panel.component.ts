@@ -13,11 +13,14 @@ import * as Highcharts from 'highcharts';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartPanelComponent implements AfterViewInit {
+  private chart: Highcharts.Chart;
+  public Highcharts: typeof Highcharts;
+
   @Input() private id: number;
   @Input() public chartOptions: Highcharts.Options;
   @Input() set sizeChange(widgetChanged: any) {
     if (this.chart && widgetChanged.id === this.id) {
-      this.chart.reflow();
+      this.updateSize();
     }
   }
 
@@ -25,10 +28,11 @@ export class ChartPanelComponent implements AfterViewInit {
     return `chart-container-${this.id}`;
   }
 
-  private chart: Highcharts.Chart;
-  public Highcharts: typeof Highcharts;
-
   constructor() {}
+
+  private updateSize(): void {
+    this.chart.reflow();
+  }
 
   public ngAfterViewInit(): void {
     this.chart = Highcharts.chart(this.identifier, this.chartOptions);
@@ -37,8 +41,4 @@ export class ChartPanelComponent implements AfterViewInit {
   public chartCallback: Highcharts.ChartCallbackFunction = function(chart) {
     console.log(chart);
   };
-
-  public updateSize(): void {
-    this.chart.reflow();
-  }
 }

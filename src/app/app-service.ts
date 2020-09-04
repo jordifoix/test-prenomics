@@ -2,6 +2,7 @@ import { ChartPanelData } from './interfaces';
 import { SeriesOptionsType, Options } from 'highcharts';
 import { appStore } from './store';
 import { Injectable } from '@angular/core';
+import { cloneDeep } from 'lodash-es';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +20,11 @@ export class AppService {
   }
 
   public saveCurrentState(): void {
-    this.lastSavedState = appStore.getValue('chartPanels');
+    this.lastSavedState = cloneDeep(appStore.getValue('chartPanels'));
+    console.log('valor del chartPanels al store:');
+    console.log(appStore.getValue('chartPanels'));
+    console.log('this.lastSavedState:');
+    console.log(this.lastSavedState);
     appStore.set('chartsChanged', false);
   }
 
@@ -40,8 +45,7 @@ export class AppService {
 
   public updateCharts(charts: ChartPanelData[]): void {
     appStore.set('chartPanels', charts);
-    // tslint:disable-next-line:triple-equals
-    if (this.lastSavedState == charts) {
+    if (this.lastSavedState === charts) {
       appStore.set('chartsChanged', false);
     } else {
       appStore.set('chartsChanged', true);
@@ -74,18 +78,10 @@ export class AppService {
       id: this.lastId++,
       chartOptions: chartOpts,
       widget: {
-        x: 0,
-        y: 0,
-        w: 1,
-        h: 1,
-        wSm: 1,
-        hSm: 1,
-        wMd: 1,
-        hMd: 1,
-        wLg: 1,
-        hLg: 1,
-        wXl: 1,
-        hXl: 1,
+        x: null,
+        y: null,
+        w: null,
+        h: null,
         collapsed: false,
       },
     };
