@@ -4,6 +4,8 @@ import { ChartPanelData } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppService } from '../app-service';
 import * as gridsterOptions from '../gridster-options';
+import { cloneDeep } from 'lodash-es';
+import { map } from 'highcharts';
 
 @Component({
   selector: 'app-grid',
@@ -36,15 +38,32 @@ export class GridComponent {
   }
 
   public widgetChange(event, chart: ChartPanelData): void {
+    console.log('widgetChange!');
     console.log(this.charts);
+    console.log(event);
+    // TODO: Aquest map no soluciona l'error de que els widgets no persisteixen els canvis al store
+    const newCharts = map(this.charts, (chartData) => {
+      return {
+        ...chartData,
+        widget: {
+          ...chartData.widget,
+          x: event.item.x,
+          y: event.item.y,
+          w: event.item.w,
+          h: event.item.h,
+        },
+      };
+    });
+    console.log('newCharts:');
+    console.log(newCharts);
     if (event.changes.includes('x') || event.changes.includes('y')) {
       console.log('canvi en posició');
     }
-    this.appService.updateCharts(this.charts);
     if (event.changes.includes('w') || event.changes.includes('h')) {
       console.log('canvi en forma');
       this.widgetSizeChange.next({ id: chart.id });
     }
+    this.appService.updateCharts(newCharts);
   }
 
   public trackByFn(index, _): number {

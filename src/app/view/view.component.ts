@@ -15,8 +15,6 @@ import { appStore } from '../store';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewComponent {
-  private lastSavedState: ChartPanelData[] = [];
-
   public data$: Observable<ChartPanelData[]> = appStore.select('chartPanels');
   public chartsChanged$: Observable<boolean> = appStore.select('chartsChanged');
 
