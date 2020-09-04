@@ -21,7 +21,6 @@ export class MenuComponent implements OnInit {
   private _sessionButtonsEnabled: boolean;
 
   @Input() set sessionButtonsEnabled(value: boolean) {
-    console.log('el menú sha enterat, valor: ' + value);
     this._sessionButtonsEnabled = value;
   }
 

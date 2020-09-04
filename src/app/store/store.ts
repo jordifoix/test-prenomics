@@ -27,7 +27,7 @@ export class Store<StoreState> {
     //      - Immer (https://immerjs.github.io/immer/docs/introduction).
     //      - See this for more options: https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns
     if (name === 'chartsChanged') {
-      console.log('chartsChanged set to: ' + state);
+      // console.log('chartsChanged set to: ' + state);
     }
     this._subject.next({
       ...this._subject.getValue(),
