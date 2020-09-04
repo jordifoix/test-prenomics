@@ -1,7 +1,6 @@
-import { ChartPanelData, Widget } from './interfaces';
+import { ChartPanelData } from './interfaces';
 import { SeriesOptionsType, Options } from 'highcharts';
-import { appStore, AppStore } from './store';
-import { Observable } from 'rxjs';
+import { appStore } from './store';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -41,7 +40,8 @@ export class AppService {
 
   public updateCharts(charts: ChartPanelData[]): void {
     appStore.set('chartPanels', charts);
-    if (this.lastSavedState === charts) {
+    // tslint:disable-next-line:triple-equals
+    if (this.lastSavedState == charts) {
       appStore.set('chartsChanged', false);
     } else {
       appStore.set('chartsChanged', true);

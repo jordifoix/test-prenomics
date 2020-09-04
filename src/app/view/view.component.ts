@@ -18,6 +18,7 @@ export class ViewComponent {
   private lastSavedState: ChartPanelData[] = [];
 
   public data$: Observable<ChartPanelData[]> = appStore.select('chartPanels');
+  public chartsChanged$: Observable<boolean> = appStore.select('chartsChanged');
 
   constructor() {}
 }

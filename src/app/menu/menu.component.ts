@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Output,
   ChangeDetectionStrategy,
+  Input,
 } from '@angular/core';
 import { AppService } from '../app-service';
 
@@ -16,6 +17,17 @@ import { AppService } from '../app-service';
 export class MenuComponent implements OnInit {
   public saveDisabled = false;
   public restoreDisabled = false;
+
+  private _sessionButtonsEnabled: boolean;
+
+  @Input() set sessionButtonsEnabled(value: boolean) {
+    console.log('el menú sha enterat, valor: ' + value);
+    this._sessionButtonsEnabled = value;
+  }
+
+  get sessionButtonsEnabled(): boolean {
+    return this._sessionButtonsEnabled;
+  }
 
   constructor(private appService: AppService) {}
 

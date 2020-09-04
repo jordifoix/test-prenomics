@@ -26,6 +26,9 @@ export class Store<StoreState> {
     //  Maybe it will be better to use a helper library to achieve it:
     //      - Immer (https://immerjs.github.io/immer/docs/introduction).
     //      - See this for more options: https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns
+    if (name === 'chartsChanged') {
+      console.log('chartsChanged set to: ' + state);
+    }
     this._subject.next({
       ...this._subject.getValue(),
       [name]: cloneDeep(state),

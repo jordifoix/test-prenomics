@@ -20,14 +20,14 @@
     <div
       class="button save"
       (click)="saveState()"
-      [class.disabled]="saveDisabled"
+      [class.disabled]="!sessionButtonsEnabled"
     >
       <span class="button-text">Save</span>
     </div>
     <div
       class="button restore"
       (click)="restoreLastSavedState()"
-      [class.disabled]="restoreDisabled"
+      [class.disabled]="!sessionButtonsEnabled"
     >
       <span class="button-text">Restore</span>
     </div>
