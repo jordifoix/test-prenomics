@@ -1,0 +1,35 @@
+<div class="menu-container">
+  <div class="button-row left" fxLayout="row" fxLayoutAlign="start center">
+    <div class="button" (click)="createChart('line')">
+      <span class="button-text">Line</span>
+    </div>
+    <div class="button" (click)="createChart('area')">
+      <span class="button-text">Area</span>
+    </div>
+    <div class="button" (click)="createChart('column')">
+      <span class="button-text">Column</span>
+    </div>
+    <div class="button" (click)="createChart('bar')">
+      <span class="button-text">Bar</span>
+    </div>
+    <div class="button" (click)="createChart('pie')">
+      <span class="button-text">Pie</span>
+    </div>
+  </div>
+  <div class="button-row" fxLayout="row" fxLayoutAlign="end center">
+    <div
+      class="button save"
+      (click)="saveState()"
+      [class.disabled]="saveDisabled"
+    >
+      <span class="button-text">Save</span>
+    </div>
+    <div
+      class="button restore"
+      (click)="restoreLastSavedState()"
+      [class.disabled]="restoreDisabled"
+    >
+      <span class="button-text">Restore</span>
+    </div>
+  </div>
+</div>

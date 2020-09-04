@@ -1,0 +1,47 @@
+.button-row {
+  background-color: #30323d;
+  padding: 4px;
+
+  &.left {
+    float: left;
+  }
+
+  .button {
+    background-color: #e8c547;
+    width: min-content;
+    padding: 8px;
+    margin: 4px;
+    cursor: pointer;
+    display: inline-block;
+
+    &.save {
+      background-color: #20d670;
+    }
+
+    &.restore {
+      background-color: #e42525;
+    }
+
+    &.disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      border: 2px inset ButtonFace;
+      background-color: #707070;
+    }
+
+    &:hover {
+      opacity: 0.9;
+
+      .button-text {
+        color: #5c80bc;
+      }
+    }
+
+    .button-text {
+      color: #30323d;
+      font-weight: 600;
+      line-height: 28px;
+      font-size: 16pt;
+    }
+  }
+}

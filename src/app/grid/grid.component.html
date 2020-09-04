@@ -1,0 +1,37 @@
+<div class="grid-container">
+  <ngx-gridster
+    [options]="gridsterOptions.gridsterOptions"
+    [draggableOptions]="gridsterOptions.gridsterDraggableOptions"
+    class="dashboard"
+  >
+    <ngx-gridster-item
+      *ngFor="let chart of charts; trackBy: trackByFn"
+      [options]="gridsterOptions.itemOptions"
+      [(x)]="chart.widget.x"
+      [(y)]="chart.widget.y"
+      [(w)]="chart.widget.w"
+      [(h)]="chart.widget.h"
+      [(wSm)]="chart.widget.wSm"
+      [(hSm)]="chart.widget.hSm"
+      [(wMd)]="chart.widget.wMd"
+      [(hMd)]="chart.widget.hMd"
+      [(wLg)]="chart.widget.wLg"
+      [(hLg)]="chart.widget.hLg"
+      [(wXl)]="chart.widget.wXl"
+      [(hXl)]="chart.widget.hXl"
+      (change)="widgetChange($event, chart)"
+    >
+      <div class="panel-heading">
+        <button class="remove-button" (click)="deleteChart(chart.id)">
+          <span class="remove-button-text">&nbsp;X&nbsp;</span>
+        </button>
+        <app-chart-panel
+          [id]="chart.id"
+          [chartOptions]="chart.chartOptions"
+          [sizeChange]="widgetSizeChange$ | async"
+        >
+        </app-chart-panel>
+      </div>
+    </ngx-gridster-item>
+  </ngx-gridster>
+</div>

@@ -1,0 +1,53 @@
+.grid-container {
+  background-color: #30323d;
+  padding: 4px;
+  height: 93vh;
+  position: relative;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  margin: 6px 0 0;
+
+  .dashboard {
+    flex: 1;
+  }
+
+  .panel-heading {
+    border-bottom: 1px solid #f0f0f0;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    top: 0;
+
+    &:hover .remove-button {
+      opacity: 0.5;
+      display: block;
+    }
+
+    .remove-button {
+      background-color: #e8c547;
+      width: min-content;
+      padding: 10px;
+      margin: 4px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      float: right;
+      position: absolute;
+      z-index: 10;
+      opacity: 0.5;
+      display: none;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .remove-button-text {
+        color: #30323d;
+        font-weight: 600;
+        line-height: 28px;
+        font-size: 16pt;
+      }
+    }
+  }
+}
