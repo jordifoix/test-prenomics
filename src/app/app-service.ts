@@ -8,10 +8,10 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AppService {
-  private state: ChartPanelData[] = [];
+  private state: ChartPanelData[] = null;
   public readonly data$: Observable<ChartPanelData[]>;
   // public readonly lastSavedState$: Observable<ChartPanelData[]>;
-  private lastSavedState = [];
+  private lastSavedState = null;
 
   private lastId = 0;
 
@@ -40,7 +40,7 @@ export class AppService {
   public addChart(chartType: string): void {
     const chartData = this.generateChartData(chartType);
     appStore.set('chartPanels', [
-      ...appStore.getValue('chartPanels'),
+      ...(appStore.getValue('chartPanels') || []),
       chartData,
     ]);
 

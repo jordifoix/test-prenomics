@@ -1,17 +1,5 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ChangeDetectionStrategy,
-} from '@angular/core';
-import {
-  IGridsterOptions,
-  IGridsterDraggableOptions,
-  GridsterComponent,
-  GridsterOptions,
-} from 'angular2gridster';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+
 import { ChartPanelData } from '../interfaces';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppService } from '../app-service';
@@ -29,7 +17,7 @@ export class GridComponent {
   public gridsterOptions = gridsterOptions;
 
   @Input() set charts(value: ChartPanelData[]) {
-    if (this.charts !== value) {
+    if (value) {
       this.charts = value;
     }
   }
