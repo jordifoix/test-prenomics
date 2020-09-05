@@ -12,7 +12,6 @@ import { appStore } from '../store';
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewComponent {
   public data$: Observable<ChartPanelData[]> = appStore.select('chartPanels');
