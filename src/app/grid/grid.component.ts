@@ -10,6 +10,7 @@ import { map } from 'highcharts';
   selector: 'app-grid',
   templateUrl: './grid.component.html',
   styleUrls: ['./grid.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GridComponent {
   private readonly widgetSizeChange = new BehaviorSubject<any>({ id: -1 });
@@ -57,6 +58,14 @@ export class GridComponent {
     }
     this.appService.updateCharts(newCharts);
     // });
+  }
+
+  public widgetChangeStart(): void {
+
+  }
+
+  public widgetChangeEnd(): void {
+
   }
 
   public trackByFn(index, item) {

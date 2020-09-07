@@ -12,6 +12,8 @@
       [(w)]="chart.widget.w"
       [(h)]="chart.widget.h"
       (change)="widgetChange($event, chart)"
+      (start)="widgetChangeStart()"
+      (end)="widgetChangeEnd()"
     >
       <div class="panel-heading">
         <button class="remove-button" (click)="deleteChart(chart.id)">
